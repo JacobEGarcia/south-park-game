@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>SOUTH PARK: The Cheesy Poof Caper - Fan Game</title>
+<style>
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#0b0e14;font-family:'Trebuchet MS',Verdana,sans-serif;}
+  #app{position:fixed;inset:0;}
+  canvas{display:block;}
+  .hud{position:fixed;z-index:10;color:#fff;text-shadow:2px 2px 0 #000;pointer-events:none;user-select:none;}
+  #poofs{top:14px;left:16px;font-size:26px;font-weight:bold;}
+  #timer{top:14px;right:18px;font-size:26px;font-weight:bold;}
+  #hint{bottom:18px;left:50%;transform:translateX(-50%);font-size:16px;opacity:.9;text-align:center;width:90%;}
+  #dialog{bottom:70px;left:50%;transform:translateX(-50%);max-width:640px;width:86%;background:rgba(10,10,16,.85);border:3px solid #fff;border-radius:12px;padding:12px 18px;font-size:19px;display:none;color:#fff;pointer-events:none;z-index:11;}
+  #dialog b{color:#ffd23f;}
+  .overlay{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at center, rgba(20,30,55,.88), rgba(4,6,12,.96));color:#fff;cursor:pointer;}
+  .overlay h1{font-size:52px;margin:0 0 6px 0;letter-spacing:2px;color:#ffd23f;text-shadow:3px 3px 0 #b33,6px 6px 0 #000;}
+  .overlay h2{font-size:22px;margin:0 0 22px 0;font-weight:normal;color:#9fd7ff;}
+  .overlay p{font-size:18px;margin:6px 0;max-width:640px;line-height:1.45;}
+  .overlay .go{margin-top:26px;font-size:24px;color:#7dff9a;animation:blink 1.2s infinite;}
+  .overlay small{position:absolute;bottom:14px;font-size:12px;color:#8a93a6;max-width:720px;}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  #win,#lose{display:none;}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="hud" id="poofs">CHEESY POOFS: 0 / 12</div>
+<div class="hud" id="timer">4:00</div>
+<div class="hud" id="hint">WASD / arrows to move &nbsp;-&nbsp; drag mouse to look &nbsp;-&nbsp; SPACE to jump &nbsp;-&nbsp; E to talk</div>
+<div class="hud" id="dialog"></div>
+
+<div class="overlay" id="title">
+  <h1>SOUTH PARK</h1>
+  <h2>THE CHEESY POOF CAPER - an unofficial 3D fan game</h2>
+  <p>Somebody hid <b>12 bags of Cheesy Poofs</b> all over town and Cartman is <b>NOT</b> happy about it.</p>
+  <p>Grab every bag before time runs out. If Cartman catches you, he takes one back.</p>
+  <p style="color:#9fd7ff">WASD move &nbsp;-&nbsp; mouse-drag camera &nbsp;-&nbsp; SPACE jump &nbsp;-&nbsp; E talk to the kids</p>
+  <div class="go">CLICK TO HEAD INTO TOWN</div>
+  <small>Non-commercial fan project made for fun. Not affiliated with, endorsed by, or sponsored by South Park, Comedy Central, MTV Entertainment Studios, or Paramount. All code and art generated procedurally - no copyrighted assets, music, or footage.</small>
+</div>
+
+<div class="overlay" id="win">
+  <h1>SWEET, DUDE!</h1>
+  <h2>You got every single Cheesy Poof.</h2>
+  <p id="wintime"></p>
+  <p style="color:#ff9a9a">Cartman: "No! NO! Those were MY Cheesy Poofs, you guys!"</p>
+  <div class="go">CLICK TO PLAY AGAIN</div>
+</div>
+
+<div class="overlay" id="lose">
+  <h1>AW, HAMBURGERS!</h1>
+  <h2>Time ran out.</h2>
+  <p>The Poofs are still out there, dude.</p>
+  <div class="go">CLICK TO TRY AGAIN</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
